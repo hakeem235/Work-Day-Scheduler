@@ -1,19 +1,19 @@
 $(document).ready(function () {
   // Setting the date and time for the header
-  $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
+  $("#currentDay").text(moment().format('MMMM Do YYYY, hh:mm:ss'));
 
   // Function for all of the save buttons
   $(".saveBtn").on("click", function () {
-    var activity = $(this).siblings(".description").val(); 
-    var hour = $(this).parent().attr("id"); 
-    localStorage.setItem(hour, activity); 
+    var activity = $(this).siblings(".description").val();
+    var hour = $(this).parent().attr("id");
+    localStorage.setItem(hour, activity);
   });
 
   // Determining the row hour...
   function hourUpdate() {
     $(".parent").each(function () {
-      var ourHour = parseInt($(this).attr("id").split("-")[1]); 
-      var momentHour = moment().hours(); 
+      var ourHour = parseInt($(this).attr("id").split("-")[1]);
+      var momentHour = moment().hours();
 
       // This statement compares ourHour to the momentHour to determine past/present/future classes for our textAreas
       if (ourHour < momentHour) {
